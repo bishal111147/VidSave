@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
         <!-- Appears in the system Share sheet; starts the download instantly and closes -->
         <activity
             android:name=".ShareReceiverActivity"

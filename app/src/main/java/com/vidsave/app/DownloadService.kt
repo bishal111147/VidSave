@@ -102,6 +102,9 @@ class DownloadService : Service() {
 
             val request = YoutubeDLRequest(url).apply {
                 addOption("--no-playlist")
+                // Use the in-app login (if any) so sites don't block anonymous requests.
+                val cookies = CookieStore.file(applicationContext)
+                if (cookies.exists()) addOption("--cookies", cookies.absolutePath)
                 // Best video stream + best audio stream (falls back to best single file).
                 addOption("-f", "bv*+ba/b")
                 // Prefer H.264 + AAC (plays on every phone), then highest resolution, then fps.

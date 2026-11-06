@@ -81,6 +81,9 @@ private fun HomeScreen() {
                 title = { Text("VidSave") },
                 actions = {
                     TextButton(onClick = {
+                        ctx.startActivity(Intent(ctx, LoginActivity::class.java))
+                    }) { Text("Log in") }
+                    TextButton(onClick = {
                         Toast.makeText(ctx, "Updating engine…", Toast.LENGTH_SHORT).show()
                         scope.launch {
                             val msg = withContext(Dispatchers.IO) { Engine.forceUpdate(ctx.applicationContext) }
