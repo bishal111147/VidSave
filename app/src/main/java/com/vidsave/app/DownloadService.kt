@@ -104,8 +104,8 @@ class DownloadService : Service() {
                 addOption("--no-playlist")
                 // Best video stream + best audio stream (falls back to best single file).
                 addOption("-f", "bv*+ba/b")
-                // Highest resolution first, then highest frame rate.
-                addOption("-S", "res,fps")
+                // Prefer H.264 + AAC (plays on every phone), then highest resolution, then fps.
+                addOption("-S", "vcodec:h264,res,fps,acodec:aac")
                 addOption("--merge-output-format", "mp4")
                 addOption("-N", "8") // parallel fragment downloads
                 addOption("--no-mtime")
